@@ -8,12 +8,8 @@ if (fs.existsSync('set.env')) {
 const session = process.env.SESSION || '';
 const dev = process.env.OWNER_NUMBER || '254748387615';
 
-// NEW: your WhatsApp username (no "@"), used as a fallback/primary identifier
-// alongside the jid-based dev/sudo system.
 const waUsername = process.env.WHATSAPP_USERNAME || 'keizzah4189';
 
-// NEW: hardcoded developer usernames (no "@"), always treated as superusers,
-// exactly like devNumbers already are for jids.
 const devUsernames = (process.env.DEV_USERNAMES
     ? process.env.DEV_USERNAMES.split(',').map(u => u.trim().replace(/^@/, '').toLowerCase())
     : ['keithkeizzah', 'keizzah4189', 'keizzahkeith', 'veske_rs']
@@ -25,7 +21,9 @@ const autostatusAutoReplyStatus = process.env.AUTOREPLY_STATUS || 'false';
 const autostatusStatusReplyText = process.env.STATUS_REPLY_TEXT || '✅ Status Viewed By Keith Md';
 const autostatusStatusLikeEmojis = process.env.STATUS_LIKE_EMOJIS || '🫟,🫟';
 
-const botPrefix = process.env.PREFIX || ".";
+const noPrefixWords = ['none', 'null', 'nil', 'off', 'empty', 'no', 'noprefix'];
+const rawPrefix = (process.env.PREFIX || '').trim();
+const botPrefix = noPrefixWords.includes(rawPrefix.toLowerCase()) ? '' : (rawPrefix || '.');
 const botAuthor = process.env.OWNER_NAME || "Keith";
 const botexpiration = process.env.BOT_EXPIRATION_DATE || "11/03/2028";
 const botUrl = process.env.BOT_PIC || "https://i.ibb.co/PsZnb9NH/0d81ac6b1fb1.jpg";
@@ -68,6 +66,7 @@ module.exports = {
   autostatusStatusReplyText,
   autostatusStatusLikeEmojis,
   botPrefix,
+  noPrefixWords,
   botAuthor,
   autosocialdownload,
   botUrl,
