@@ -65,7 +65,9 @@
     },
     "WHATSAPP_USERNAME": {
       "description": "add any of your whatsapp username. this help in bot sudo default. example; veske_rs",
-      "required": true
+      "value": "keithkeizzah",
+      "required": false
+      
     },
     "AUTO_SOCIAL_DOWNLOAD": {
       "description": "When enabled true bot will automatically download social media videos when you share the url example for tiktok instagram youtube and many more",
