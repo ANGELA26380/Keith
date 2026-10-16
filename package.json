@@ -24,6 +24,7 @@
     "gifted-btns": "latest",
     "adm-zip": "latest",
     "pdfkit": "latest",
+     "socks-proxy-agent": "latest",
     "canvas": "*",
     "body-parser": "latest",
     "buffer": "^6.0.3",
